@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Confirm and Pay</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		.row
+		{
+			width: 100%;
+		}
+		.container
+		{
+			background: #f1f1f2; 
+			width: 50%;
+		}
+		button
+		{
+			border:none;
+			width: 50%;
+			height: 40px;
+			background: #35b2f5;
+			color: white; 
+		}
+		i
+		{
+			color: #35b2f5;
+		}
+		h2
+		{
+			margin-left: 40%;
+			margin-top: 100px;
+		}
+		@media only screen and (max-width:990px)
+		{
+			h2
+			{
+				margin-left: 20%;
+			}
+		}
+	</style>
+</head>
+<body>
+
+	<br>
+	<!-- <center> -->
+	<div class="row">
+
+		<!-- left part starts -->
+
+		<div class="col-md-6 left">
+			<center>
+				<br><br><br>
+					<h1 style="color: #35b2f5; font-weight: bolder;">Confirm & Pay</h1>
+					<h6>One final Confirmation before kick off!<img src="https://i.postimg.cc/0NrVPPbJ/indicator.png"></h6>
+				<div class="row">
+				{% if item != "Your cart is empty!" %}
+					{% for url in item %}
+						<div class="col-lg-6 cat">
+							<img src="{{url}}">
+						</div>
+					{% endfor %}
+				{% else %}
+					<h2 style="">{{item}}</h2>
+				{% endif %}
+				</div>
+			</center>
+		</div>
+		
+		<!-- left part ends -->
+
+		<!-- right part starts -->
+
+		<div class="col-md-6 right" style="">
+			<br><br>
+			{% if item != "Your cart is empty!" %}
+			<div class="container">
+				<strong style="float: left;">Your Email</strong><span style="float: right;"><i class="fa fa-edit"></i></span><br>
+				<p><i class="fa fa-envelope"></i>&nbsp;&nbsp;Username@gmail.com</p>
+			</div>
+			<br>
+			<div class="container">
+				<strong>Billing Information</strong><span style="float: right;"><i class="fa fa-edit"></i></span><br>
+				<p><i class="fa fa-user"></i>&nbsp;&nbsp;Nikita Patel</p>
+				<p><i class="fa fa-location-arrow"></i>&nbsp;&nbsp;ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor</p>
+				<p><i class="fa fa-mobile"></i>&nbsp;&nbsp;123&nbsp;456&nbsp;7890</p>
+			</div>
+			<br>
+			<div class="container">
+				<strong>Payment</strong><span style="float: right;"><i class="fa fa-edit"></i></span><br>
+				<p><i class="fa fa-credit-card"></i>&nbsp;&nbsp;****&nbsp;****&nbsp;****&nbsp;2245<span style="float: right;">2/26</span></p>
+			</div>
+			<br>
+			<div class="container">
+				<p>Subtotal: <span style="float: right;">$200.00</span></p>
+				<p>Taxes: <span style="float: right;">$Free</span></p>
+				<strong><p>Total Price: <span style="float: right;">$200.00</span></p></strong>
+			</div>
+			<br>
+
+			<center><a href="success"><button>PLACE YOUR ORDER</button></a></center>
+			{% endif %}
+		</div>
+
+		<!-- right part ends -->
+
+	</div>
+<!-- </center> -->
+
+</body>
+</html>

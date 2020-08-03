@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assignment</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		table,tr,th
+		{
+			margin-top: 10px;
+			/*border: 1px solid black;*/
+		}
+		th
+		{
+			width: 25%
+		}
+		.indicator
+		{
+			/*border: 1px  solid black;*/
+			margin-left: -33%;
+			overflow: hidden;
+			margin-top: -33px;
+			position: absolute;
+			transition: 1s;
+			width: 110px;
+			height: 70px;
+		}
+		.progress-bar
+		{
+			/*transition: 0.2s;*/
+		}
+		.prg
+		{
+			position: relative;
+		}
+		a
+		{
+			color: black;
+		}
+		a:hover
+		{
+			color: black;
+			text-decoration: none;
+		}
+		.row
+		{
+			width: 80%;
+		}
+		.cat
+		{
+			height: 230px;/*
+			border: 1px solid black;
+			background: red;*/
+		}
+		.states
+		{
+			margin-top: 8px;
+			object-fit: contain;
+		}
+		/*.states:hover
+		{
+			border: 1px solid black;
+		}*/
+		.back
+		{
+			display: none;
+		}
+		#mark1,#mark4,#mark8,#mark11
+		{
+			display: none;
+			/*border: 1px solid black;*/
+			margin-top: -230px;
+			width: 35px;
+			height: 35px;
+			margin-left: 290px;
+		}
+		#mark2,#mark5,#mark9,#mark12
+		{
+			display: none;
+			margin-top: -230px;
+			width: 35px;
+			height: 35px;
+			margin-left: 290px;	
+		}
+		#mark3,#mark6,#mark10
+		{
+			display: none;
+			margin-top: -230px;
+			width: 35px;
+			height: 35px;
+			margin-left: 290px;	
+		}
+		#mark7
+		{
+			display: none;
+			margin-top: -230px;
+			width: 35px;
+			height: 35px;
+			margin-left: 290px;	
+		}
+		#cart
+		{
+			display: none;
+			border: none;
+			width: 150px;
+			height: 50px;
+			margin-left: 60%;
+		}
+		button
+		{
+			background: none;
+			border: none;
+			outline: none;
+			font-weight: bolder;
+		}
+		i
+		{
+			color: #35b2f5;
+		}
+		.header
+		{
+			width: 100%;
+			/*border: 1px solid black;*/
+		}
+		.col
+		{
+			border: 1px solid red;
+		}
+		.cart
+		{
+			padding: 12px;
+		}
+		h2
+		{
+			margin-left: 30%;
+		}
+		@media only screen and (max-width:990px) 
+		{
+			h2
+			{
+				margin-left: 0;
+			}
+			.cart
+			{
+				text-align: center;
+			}
+		}
+		.items_count
+		{
+			margin-left: 10%; 
+			margin-top: -10px; 
+			font-size: 12px;
+			border-radius: 50px; 
+			width: 15px; 
+			font-weight: bolder;
+		}
+		img
+		{
+			cursor: pointer;
+		}
+	</style>
+	<script type="text/javascript">
+		
+		var selected = [0,0,0,0,0,0,0,0,0,0,0,0,0]
+		var items=0
+
+		// this function shows info related price and details as soon as you hover any image
+
+		function flip(back_id,front_id,num)
+		{
+			// alert(front_id+"-"+back_id);
+			if(selected[num]==0)
+			{
+				document.getElementById(front_id).style.display = "none";
+				document.getElementById(back_id).style.display = "block";
+				document.getElementById(back_id).style.marginTop = "10px";
+			}
+		}
+
+		// as soon as your arrow come out of any image then this funtion will appear image which is before hover
+
+		function reverse(back_id,front_id)
+		{
+			// alert(front_id+"-"+back_id);
+			document.getElementById(front_id).style.display = "block";
+			document.getElementById(back_id).style.display = "none";
+		}
+
+		// this function handles requests related to cart like insert and remove
+		// if atleast one item is selected then "go to cart" button will appear otherwise not
+		// as soon as you select any intem in any page other phases will be disables
+		// phases means initiation,planning,execution and closing
+		// if you want to unselect any item you can do too
+		// if you unselect all selected items "go to cart" button will disapper and other phases will be enabled
+
+		function cart(back_id,front_id,mark,id,num)
+		{
+			if(selected[num]==0)
+			{
+				// alert("add to cart?");
+				selected[num]=1;
+				items+=1;
+				document.getElementById(back_id).style.display = "none";
+				document.getElementById(front_id).style.display = "block";
+				document.getElementById("cart").style.display = "block";
+				document.getElementById("items_count").innerHTML = items;
+				document.getElementById(mark).style.display = "block";
+				document.getElementById(front_id).style.border = "2px solid #35b2f5";
+			}
+			else
+			{
+				// alert("remove from the cart ?");
+				items--;
+				selected[num]=0;
+				document.getElementById("items_count").innerHTML = items;
+				document.getElementById(back_id).style.display = "none";
+				document.getElementById(front_id).style.display = "block";
+				document.getElementById(mark).style.display = "none";
+				document.getElementById(front_id).style.border = "none";
+				if(items==0)
+				{
+					document.getElementById("cart").style.display = "none";
+				}
+				else
+				{
+					document.getElementById("cart").style.display = "block";
+				}
+			}
+		}
+
+		// function reset(back_id,front_id)
+		// {
+		// 	document.getElementById(front_id).style.border = "none";	
+		// }
+
+		// this functions displays current div and set display = none for other divs
+		// divs means divs of initiation,planning.... which includes requirement analysis,project spec docs ..etc
+
+		function loadNext(id) 
+		{
+			if(id=='1')
+			{
+		  		document.getElementById("p_bar").style.width = "0%";
+		  		document.getElementById("indicator").style.marginLeft = "-33%";
+		  		document.getElementById("initiation").style.display = "";
+		  		document.getElementById("planning").style.display = "none";
+		  		document.getElementById("execution").style.display = "none";
+		  		document.getElementById("closing").style.display = "none";
+			}
+		  	else if(id=='2')
+		  	{
+		  		document.getElementById("p_bar").style.width = "31%";
+		  		document.getElementById("indicator").style.marginLeft = "-13%";
+		  		document.getElementById("planning").style.display = "";
+		  		document.getElementById("initiation").style.display = "none";
+		  		document.getElementById("execution").style.display = "none";
+		  		document.getElementById("closing").style.display = "none";
+		  	}
+			else if(id=='3')
+		  	{
+		  		document.getElementById("p_bar").style.width = "60%";
+		  		document.getElementById("indicator").style.marginLeft = "5%";
+		  		document.getElementById("execution").style.display = "";
+		  		document.getElementById("initiation").style.display = "none";
+		  		document.getElementById("planning").style.display = "none";
+		  		document.getElementById("closing").style.display = "none";
+		  	}
+			else 
+			{
+		  		document.getElementById("p_bar").style.width = "93%";
+		  		document.getElementById("indicator").style.marginLeft = "26%";
+		  		document.getElementById("closing").style.display = "";
+		  		document.getElementById("initiation").style.display = "none";
+		  		document.getElementById("planning").style.display = "none";
+		  		document.getElementById("execution").style.display = "none";
+			}
+		}
+
+		// this function makes comma seperated string of selected item from selected array and passes through hidden from field to next page
+
+		function makeList()
+		{
+			var i,list="";
+			for(i=0;i<13;i++)
+			{
+				if(selected[i])
+					list+=i.toString()+",";
+			}
+			if(list.length==0)
+				list+='0,';
+			document.getElementById("item_list").value = list.slice(0, list.length-1);
+			document.getElementById("item_list1").value = list.slice(0, list.length-1);
+		}
+
+	</script>
+</head>
+<body>
+
+		<!-- I prefer to put image from online cloud like postbin...because if project is too much big and having so much images then this will be helpful as we are not storing images in local machine -->
+		<!-- So in this project evry image is taken from postbin where i have uploaded already-->
+
+		<!-- and here i am not linking/importing css files from static files as this project is not so large -->
+
+		<!-- and at some places i have used inline css where i have to give style to one or two attributes -->
+
+	<center>
+
+		<!-- Heading -->
+
+		<br>
+
+		<div class="row header">
+			<div class="col-lg-10 heading"><h2 style="">Let's Bulid Something Great !</h2></div>
+			<div class="col-lg-2 cart">
+				<form method="post" action="confirm-and-pay">
+					{% csrf_token %}
+					<input type="hidden" name="from" value="cart_icon">
+					<input type="hidden" name="item_list" value="" id="item_list">
+					<button onclick="makeList()" id="cart_icon">
+						<i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 28px;">
+						<sup style="margin-left: -5px;"><span style="font-size: 12px; font-weight: bolder; color: black;" id="items_count">0</span></sup>	
+						</i>
+					</button>
+				</form>
+			</div>
+		</div>
+		
+		<br><br><br>
+
+		<!-- Progress bar starts-->
+
+		<div class="prg">
+			<!-- Porgress indicator -->
+
+			<img src="https://i.postimg.cc/0NrVPPbJ/indicator.png" class="indicator" id="indicator">
+			
+			<div class="progress" style="width: 65%; height:4px;">	  
+			  	<div class="progress-bar" role="progressbar" style="transition-duration: 1s; background: #ba13b9;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" id="p_bar">
+			  	</div>
+	  		</div>	
+		</div>
+
+		<!-- Progress bar ends -->
+
+		<br>
+
+		<table class="table table-borderless" style="width: 67%;">
+		  <thead>
+		    <tr>
+		      <th scope="col" style="width: 20%;">
+		      	<!-- <a href="#" onclick="loadNext('1')" id="i">Initiation</a> -->
+		      	<button onclick="loadNext('1')" id="i">Initiation</button>
+		      </th>
+		      <th scope="col" style="text-align: center;">
+		      	<!-- <a href="#" onclick="loadNext('2')" id="p">Planning</a> -->
+		      	<button onclick="loadNext('2')" id="p">Planning</button>
+		      </th>
+		      <th scope="col" style="text-align: center;">
+		      	<!-- <a href="#" onclick="loadNext('3')" id="e">Execution</a> -->
+		      	<button onclick="loadNext('3')" id="e">Execution</button>
+		      </th>
+		      <th scope="col" style="text-align: right; width: 20%">
+		      	<!-- <a href="#" onclick="loadNext('4')" id="c">Closing</a> -->
+		      	<button onclick="loadNext('4')" id="c">Closing</button>		
+		      </th>
+		    </tr>
+		  </thead>
+		</table>
+
+		<br>
+
+		<!-- Initiation starts-->
+
+		<div class="row" style="" id="initiation" >
+			<div class="col-lg-4 cat" data-aos="zoom-in" data-aos-delay="200">
+				<img src="https://i.postimg.cc/PJ7b589G/Component-11-1-1-X.png" style="" class="states" id="f1" onmouseover="flip('b1','f1',1)" onmouseout="reverse('b1','f1')"
+				onclick="cart('b1','f1','mark1',1,1)">
+				<img src="https://i.postimg.cc/ZKBJycr2/4-1-1X.png" style="" class="back" id="b1" 
+				onclick="cart('b1','f1','mark1',1,1)">
+				<img src="https://i.postimg.cc/Y2mzpGPz/Group-263-1-X.png" id="mark1">
+			</div>
+			<div class="col-lg-4 cat">
+				<img src="https://i.postimg.cc/1RrZV3Yx/Component-3-1-1-X.png" class="states" 
+				id="f2" onmouseover="flip('b2','f2',2)" onmouseout="reverse('b2','f2')"
+				onclick="cart('b2','f2','mark2',1,2)">
+				<img src="https://i.postimg.cc/ZKBJycr2/4-1-1X.png" style="" class="back" id="b2"
+				onclick="cart('b2','f2','mark2',1,2)">
+				<img src="https://i.postimg.cc/Y2mzpGPz/Group-263-1-X.png" id="mark2">
+			</div>
+			<div class="col-lg-4 cat">
+				<img src="https://i.postimg.cc/L83RdkGb/Group-250-1-X.png" class="states" id="f3"
+				onmouseover="flip('b3','f3',3)" onmouseout="reverse('b3','f3')"
+				onclick="cart('b3','f3','mark3',1,3)">
+				<img src="https://i.postimg.cc/ZKBJycr2/4-1-1X.png" style="" class="back" id="b3"
+				onclick="cart('b3','f3','mark3',1,3)">
+				<img src="https://i.postimg.cc/Y2mzpGPz/Group-263-1-X.png" id="mark3">
+			</div>
+		</div>
+
+		<!-- Initiation ends -->
+
+		<!-- Planning starts -->
+
+		<div class="row" style="display: none;" id='planning' >
+			<div class="col-lg-4 cat">
+				<img src="https://i.postimg.cc/qqBX5qG6/Group-285-1-X.png" style="" class="states" 
+				id="f4" onmouseover="flip('b4','f4',4)" onmouseout="reverse('b4','f4')" 
+				onclick="cart('b4','f4','mark4',2,4)">
+				<img src="https://i.postimg.cc/ZKBJycr2/4-1-1X.png" style="" class="back" id="b4"
+				onclick="cart('b4','f4','mark4',2,4)">
+				<img src="https://i.postimg.cc/Y2mzpGPz/Group-263-1-X.png" id="mark4">
+			</div>
+			<div class="col-lg-4 cat">
+				<img src="https://i.postimg.cc/W3vTxW1C/Component-5-1-1-X.png" style="" class="states"
+				id="f5" onmouseover="flip('b5','f5',5)" onmouseout="reverse('b5','f5')"
+				onclick="cart('b5','f5','mark5',2,5)">
+				<img src="https://i.postimg.cc/ZKBJycr2/4-1-1X.png" style="" class="back" id="b5"
+				onclick="cart('b5','f5','mark5',2,5)">
+				<img src="https://i.postimg.cc/Y2mzpGPz/Group-263-1-X.png" id="mark5">
+			</div>
+			<div class="col-lg-4 cat">
+				<img src="https://i.postimg.cc/bYV4tVjP/Component-4-1-1-X.png" class="states" 
+				id="f6" onmouseover="flip('b6','f6',6)" onmouseout="reverse('b6','f6')"
+				onclick="cart('b6','f6','mark6',2,6)">
+				<img src="https://i.postimg.cc/ZKBJycr2/4-1-1X.png" style="" class="back" id="b6"
+				onclick="cart('b6','f6','mark6',2,6)">
+				<img src="https://i.postimg.cc/Y2mzpGPz/Group-263-1-X.png" id="mark6">
+			</div>
+			<div class="col-lg-4 cat">
+				<img src="https://i.postimg.cc/qMCDCkLc/Component-14-1-1-X.png" class="states"
+				id="f7" onmouseover="flip('b7','f7',7)" onmouseout="reverse('b7','f7')"
+				onclick="cart('b7','f7','mark7',2,7)">
+				<img src="https://i.postimg.cc/ZKBJycr2/4-1-1X.png" style="" class="back" id="b7"
+				onclick="cart('b7','f7','mark7',2,7)">
+				<img src="https://i.postimg.cc/Y2mzpGPz/Group-263-1-X.png" id="mark7">
+			</div>
+		</div>
+		
+		<!-- Planning ends -->
+
+		<!-- Execution starts -->
+
+		<div class="row" style="display: none;" id="execution">
+			<div class="col-lg-4 cat">
+				<img src="https://i.postimg.cc/76K3RqGb/Group-273-1-X-1.png" style="" class="states"
+				id="f8" onmouseover="flip('b8','f8',8)" onmouseout="reverse('b8','f8')"
+				onclick="cart('b8','f8','mark8',3,8)">
+				<img src="https://i.postimg.cc/ZKBJycr2/4-1-1X.png" style="" class="back" id="b8"
+				onclick="cart('b8','f8','mark8',3,8)">
+				<img src="https://i.postimg.cc/Y2mzpGPz/Group-263-1-X.png" id="mark8">
+			</div>
+			<div class="col-lg-4 cat">
+				<img src="https://i.postimg.cc/XXSKT1JZ/Group-272-1-X.png" class="states"
+				id="f9" onmouseover="flip('b9','f9',9)" onmouseout="reverse('b9','f9')"
+				onclick="cart('b9','f9','mark9',3,9)">
+				<img src="https://i.postimg.cc/ZKBJycr2/4-1-1X.png" style="" class="back" id="b9"
+				onclick="cart('b9','f9','mark9',3,9)">
+				<img src="https://i.postimg.cc/Y2mzpGPz/Group-263-1-X.png" id="mark9">
+			</div>
+			<div class="col-lg-4 cat">
+				<img src="https://i.postimg.cc/prxzCh18/Group-273-1-X.png" class="states"
+				id="f10" onmouseover="flip('b10','f10',10)" onmouseout="reverse('b10','f10')"
+				onclick="cart('b10','f10','mark10',3,10)">
+				<img src="https://i.postimg.cc/ZKBJycr2/4-1-1X.png" style="" class="back" id="b10"
+				onclick="cart('b10','f10','mark10',3,10)">
+				<img src="https://i.postimg.cc/Y2mzpGPz/Group-263-1-X.png" id="mark10">
+			</div>
+		</div>
+		
+		<!-- Execution ends -->
+
+		<!-- Closing starts -->
+
+		<div class="row" style="display: none;" id="closing">
+			<div class="col-lg-4 cat">
+				<img src="https://i.postimg.cc/G2yMByZ1/Component-13-2-1-X-1.png" style="" class="states" id="f11" onmouseover="flip('b11','f11',11)" onmouseout="reverse('b11','f11')"
+				onclick="cart('b11','f11','mark11',4,11)">
+				<img src="https://i.postimg.cc/ZKBJycr2/4-1-1X.png" style="" class="back" id="b11"
+				onclick="cart('b11','f11','mark11',4,11)">
+				<img src="https://i.postimg.cc/Y2mzpGPz/Group-263-1-X.png" id="mark11">
+			</div>
+			<div class="col-lg-4 cat">
+				<img src="https://i.postimg.cc/MHbXp95f/Component-10-2-1-X.png" class="states"
+				id="f12" onmouseover="flip('b12','f12',12)" onmouseout="reverse('b12','f12')"
+				onclick="cart('b12','f12','mark12',4,12)">
+				<img src="https://i.postimg.cc/ZKBJycr2/4-1-1X.png" style="" class="back" id="b12"
+				onclick="cart('b12','f12','mark12',4,12)">
+				<img src="https://i.postimg.cc/Y2mzpGPz/Group-263-1-X.png" id="mark12">
+			</div>
+		</div>
+		
+		<form method="post" action="confirm-and-pay">
+			{% csrf_token %}
+			<input type="hidden" name="item_list1" value="" id="item_list1">
+			<input type="hidden" name="from" value="cart_button">
+			<button onclick="makeList()" id="cart">
+				<img src="https://i.postimg.cc/5yKtYqnN/cart.png" id="cartimg">
+			</button>
+		
+		</form>
+	</center>
+</body>
+</html>
