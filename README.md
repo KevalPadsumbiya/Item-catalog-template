@@ -8,5 +8,5 @@ README
 - If you want to use this template, you need to setup Python and Django in your system and then you will be able to use.
 - prototype is app and templated contains all HTML files used in this app.
 
-THANK YOU
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~THANK YOU~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
