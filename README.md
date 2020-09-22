@@ -6,4 +6,7 @@ README
 - When user selects any item go to cart will appears.
 - this template also includes billing page having various items details and user details.
 - If you want to use this template, you need to setup Python and Django in your system and then you will be able to use.
+- prototype is app and templated contains all HTML files used in this app.
+
+THANK YOU
 
