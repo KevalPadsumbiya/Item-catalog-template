@@ -1,6 +1,6 @@
 ### Output <h3>
 1.
-[![output.jpg](https://i.postimg.cc/SNTwPtYJ/output.jpg)](https://postimg.cc/9r98Rbph)                                                                                                                     
+[![output.jpg](https://i.postimg.cc/cLn64z3b/output.jpg)](https://postimg.cc/NKQQdpp6)                                                                                                                  
 2.                                                                                                                               
 [![outpu1.jpg](https://i.postimg.cc/pTKmGF0L/outpu1.jpg)](https://postimg.cc/HcsWjVDq)
                                                       
