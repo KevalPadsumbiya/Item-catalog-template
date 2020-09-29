@@ -2,7 +2,7 @@
                                                                   Output
 
 [![output.jpg](https://i.postimg.cc/SNTwPtYJ/output.jpg)](https://postimg.cc/9r98Rbph)
-
+[![outpu1.jpg](https://i.postimg.cc/pTKmGF0L/outpu1.jpg)](https://postimg.cc/HcsWjVDq)
                                                             About this template
 
 - This template is made of using HTML, Django(Pyhon framework) and CSS.
