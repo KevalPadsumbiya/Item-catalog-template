@@ -4,9 +4,8 @@
                                                                                                                      
 2.                                                                                                                               
 [![outpu1.jpg](https://i.postimg.cc/pTKmGF0L/outpu1.jpg)](https://postimg.cc/HcsWjVDq)
-                                                           
-                                                            About this template
-
+                                                         
+### About this template <h3>
 - This template is made of using HTML, Django(Pyhon framework) and CSS.
 - Here images were fetched from "https://postimages.org" which is  is a very simple, fast and reliable free image service.
 - This is responsive carousel like template which can be used for selecting product having less categories.
