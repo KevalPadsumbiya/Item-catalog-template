@@ -1,4 +1,3 @@
-
 ## Output <h2>
 ### 1 <h3>
 [![output.jpg](https://i.postimg.cc/SNTwPtYJ/output.jpg)](https://postimg.cc/9r98Rbph)
