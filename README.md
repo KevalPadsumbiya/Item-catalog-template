@@ -3,7 +3,7 @@
 
 [![output.jpg](https://i.postimg.cc/SNTwPtYJ/output.jpg)](https://postimg.cc/9r98Rbph)
 
-* About this template
+** About this template
 
 - This template is made of using HTML, Django(Pyhon framework) and CSS.
 - Here images were fetched from "https://postimages.org" which is  is a very simple, fast and reliable free image service.
