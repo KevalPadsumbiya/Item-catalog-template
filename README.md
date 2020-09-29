@@ -2,7 +2,7 @@
 1.
 [![output.jpg](https://i.postimg.cc/cLn64z3b/output.jpg)](https://postimg.cc/NKQQdpp6)                                                                                                                  
 2.                                                                                                                               
-[![outpu1.jpg](https://i.postimg.cc/pTKmGF0L/outpu1.jpg)](https://postimg.cc/HcsWjVDq)
+[![outpu1.jpg](https://i.postimg.cc/Gp6W3Mkq/outpu1.jpg)](https://postimg.cc/KKrqJDpM)
                                                       
 ### About this template <h3>
 - This template is made of using HTML, Django(Pyhon framework) and CSS.
