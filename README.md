@@ -3,8 +3,7 @@
 [![output.jpg](https://i.postimg.cc/SNTwPtYJ/output.jpg)](https://postimg.cc/9r98Rbph)                                                                                                                     
 2.                                                                                                                               
 [![outpu1.jpg](https://i.postimg.cc/pTKmGF0L/outpu1.jpg)](https://postimg.cc/HcsWjVDq)
- 
-<hr style="border:2px solid gray"> </hr>                                                        
+                                                      
 ### About this template <h3>
 - This template is made of using HTML, Django(Pyhon framework) and CSS.
 - Here images were fetched from "https://postimages.org" which is  is a very simple, fast and reliable free image service.
